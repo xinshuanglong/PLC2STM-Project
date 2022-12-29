@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../STM32F4xx_StdPeriph_Driver"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"bsp_include.h": "c"
+		}
+	}
+}

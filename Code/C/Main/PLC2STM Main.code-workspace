@@ -1,0 +1,37 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../STM32F4xx_StdPeriph_Driver"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"bsp_include.h": "c",
+			"stdio.h": "c",
+			"event_groups.h": "c",
+			"stdbool.h": "c",
+			"stdlib.h": "c",
+			"task.h": "c",
+			"protocol.h": "c",
+			"app_ev_bit.h": "c",
+			"app_debug.h": "c",
+			"app_adc.h": "c",
+			"app_port.h": "c",
+			"iwdg.h": "c",
+			"app_cmd.h": "c",
+			"bsp_rtc.h": "c",
+			"bsp_bm8563.h": "c",
+			"sdio_sdcard.h": "c",
+			"app_env.h": "c",
+			"app_measure.h": "c",
+			"app_com_sub.h": "c",
+			"bsp_cfg.h": "c",
+			"app_database.h": "c",
+			"app_bushui.h": "c",
+			"app_bushui_andan.h": "c"
+		}
+	}
+}
