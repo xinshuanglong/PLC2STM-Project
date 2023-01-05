@@ -30,6 +30,10 @@ typedef struct
 } _AlarmDatabase;
 #pragma pack()
 
+int AlarmDatabase_Insert(_AlarmDatabase data);
+int AlarmDatabase_GetCount(void);
+int AlarmDatabase_GetReverse(int index, int count, _AlarmDatabase *data);
+
 int LogDatabase_Insert(const char *format, ...);
 int LogDatabase_GetCount(void);
 int LogDatabase_Get(int index, int count, _LogDatabase *data);

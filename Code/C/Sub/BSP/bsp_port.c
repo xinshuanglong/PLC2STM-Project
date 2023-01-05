@@ -339,7 +339,7 @@ const Gpio_Strategy gIOCtl[] = {
         .log = "≈‰ÀÆ±√µÁ‘¥",
         .init = GPIO_E11_Init,
         .write = GPIO_E11_Write,
-        .read = GPIO_E12_Read_Output,
+        .read = GPIO_E11_Read_Output,
     },
     {
         .index = 85,

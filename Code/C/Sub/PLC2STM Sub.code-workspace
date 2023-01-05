@@ -9,7 +9,8 @@
 	],
 	"settings": {
 		"files.associations": {
-			"bsp_include.h": "c"
+			"bsp_include.h": "c",
+			"vcruntime.h": "c"
 		}
 	}
 }

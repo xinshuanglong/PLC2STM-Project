@@ -31,7 +31,9 @@ int main(void)
   printf("-------------------------------\r\n");
 
   Bsp_Init();
+
   // IWDG_Init();
+
 
   // 创建开始任务
   xTaskCreate((TaskFunction_t)start_task,          // 任务函数

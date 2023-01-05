@@ -89,6 +89,18 @@ void RefreshREG(void)
     gReportStatus.alarm = alarm;
     gReportStatus.error = error;
 
+    if (gWorkStatus != 0)
+    {
+        gReportStatus.runTime = (xTaskGetTickCount() - gtPara.startTime) / 1000;
+    }
+    else
+    {
+        gReportStatus.runTime = gtPara.runTotalTime;
+    }
+
+    memcpy((void *)gReportStatus.describe, (void *)gtPara.describe, sizeof(gReportStatus.describe));
+    memcpy((void *)gReportStatus.flowDescribe, (void *)gtPara.flowDescribe, sizeof(gReportStatus.flowDescribe));
+
     memcpy(REGForGB + REG_STATE_INDEX, (const void *)&gReportStatus, sizeof(gReportStatus));
 }
 
@@ -158,6 +170,7 @@ const char StopCmdCHS[][16] = {
     "Debug命令",
     "屏幕操作",
     "串口命令",
+    "错误停止",
 };
 char *GetStopCmdCHS(uint8_t cmd)
 {
@@ -199,9 +212,15 @@ const _AlarmErrorCHS AlarmErrorCHS[] = {
     {error_flash_alarm, "芯片存储异常"},
     {null_formal_alarm, "缺公式"},
 
-    {valve_commuication_alarm, "旋转阀通信异常"},
-    {spec_commuication_alarm, "光谱仪通信异常"},
-    {pump_commuication_alarm, "柱塞泵通信异常"},
+    {shuiliu_alarm, "水流异常"},
+    {yiji_yewei_alarm, "一级液位超时异常"},
+    {erji_yewei_alarm, "二级级液位超时异常"},
+    {sanji_yewei_alarm, "三级级液位超时异常"},
+    {yiji_yewei_bushui_alarm, "一级液位超时异常(补水)"},
+    {erji_yewei_bushui_alarm, "二级级液位超时异常(补水)"},
+    {sanji_yewei_bushui_alarm, "三级级液位超时异常(补水)"},
+
+    {sub_commuication_alarm, "副板通信异常"},
 };
 
 char *GetAlarmCHS(uint8_t code)

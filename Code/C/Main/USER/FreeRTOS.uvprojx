@@ -703,6 +703,11 @@
               <FileType>1</FileType>
               <FilePath>..\APP\app_bushui_andan.c</FilePath>
             </File>
+            <File>
+              <FileName>app_flow_jianyi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\app_flow_jianyi.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

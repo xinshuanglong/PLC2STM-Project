@@ -154,25 +154,25 @@ static int Database_GetReverse(const char *fileName, int index, int count, int d
 }
 
 // ¸æ¾¯Êý¾Ý
-int AlarmDatabase_Insert(uint8_t id, uint8_t mode, _AlarmDatabase data)
+int AlarmDatabase_Insert(_AlarmDatabase data)
 {
     char fileName[32];
 
-    sprintf(fileName, "0:/%s_%d_%d.bin", ALARM_FILE_NAME, id, mode);
+    sprintf(fileName, "0:/%s.bin", ALARM_FILE_NAME);
     return Database_Insert(fileName, &data, sizeof(_AlarmDatabase));
 }
 
-int AlarmDatabase_GetCount(uint8_t id, uint8_t mode)
+int AlarmDatabase_GetCount(void)
 {
     char fileName[32];
-    sprintf(fileName, "0:/%s_%d_%d.bin", ALARM_FILE_NAME, id, mode);
+    sprintf(fileName, "0:/%s.bin", ALARM_FILE_NAME);
     return Database_GetCount(fileName, sizeof(_AlarmDatabase));
 }
 
-int AlarmDatabase_GetReverse(uint8_t id, uint8_t mode, int index, int count, _AlarmDatabase *data)
+int AlarmDatabase_GetReverse(int index, int count, _AlarmDatabase *data)
 {
     char fileName[32];
-    sprintf(fileName, "0:/%s_%d_%d.bin", ALARM_FILE_NAME, id, mode);
+    sprintf(fileName, "0:/%s.bin", ALARM_FILE_NAME);
     return Database_GetReverse(fileName, index, count, sizeof(_AlarmDatabase), data);
 }
 

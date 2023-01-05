@@ -39,5 +39,11 @@ void ComSubTask(void *pvParameters)
         count = ModBus_Master_16(CMD_SUB, DEVICE_SUB_ADDR, 0x2600, (uint8_t *)&gBoardSubWrite.ctl, sizeof(_BoardCtl));
         err = count < 0 ? err + 1 : 0;
         vTaskDelay(100);
+
+        if (err > 5 && gWorkStatus != 0)
+        {
+            Alarm_Add(1, 0, sub_commuication_alarm);
+            Measure_Stop(StopError);
+        }
     }
 }

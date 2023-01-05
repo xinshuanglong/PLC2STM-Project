@@ -205,13 +205,14 @@ static int AT_CmdDeal(const char *cmd)
     int res = 0;
     int para[12] = {0};
 
-    res = sscanf(cmd, "AT:Run:%d,%d,%d", para, para + 1, para + 2);
-    if (res == 3)
+    res = sscanf(cmd, "AT:Run:%d,%d,%d,%d", para, para + 1, para + 2, para + 3);
+    if (res == 4)
     {
         _Measure measure = {0};
-        measure.fid = para[0];
-        measure.isOnlyDuoCan = para[1];
-        measure.isJiaBiao = para[2];
+        measure.id = para[0];
+        measure.fid = para[1];
+        measure.isOnlyDuoCan = para[2];
+        measure.isJiaBiao = para[3];
 
         Measure_Start(measure);
         goto end;

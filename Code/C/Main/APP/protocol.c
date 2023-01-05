@@ -57,6 +57,18 @@ uint16_t ModBus_Protocol(uint8_t *data, uint16_t len, uint8_t *backData)
                 backData[index++] = REGForGB[temp + i];
             }
         }
+        else if (reg_addr >= 0x2600 && reg_addr < 0x2800)
+        {
+            uint8_t *ctl = (uint8_t *)&gBoardState;
+            temp = (reg_addr - 0x2600) * 2;
+            for (i = 0; i < reg_count * 2; i++)
+            {
+                if (temp + i < sizeof(_Board))
+                    backData[index++] = ctl[temp + i];
+                else
+                    backData[index++] = 0;
+            }
+        }
         else if (reg_addr == 0xFF00)
         {
             uint32_t otaStatus = 0;

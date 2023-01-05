@@ -16,7 +16,7 @@ typedef struct
   u16 version;                  // 16
   float instrument_temperature; //
   float instrument_humidity;    //
-  uint16_t runTime;             // 从流程开始到现在
+  uint16_t runTime;             // 从流程开始到现在,停止时代表总时间
   char describe[8];             // 当前步骤剩余时间,试剂量，温度等信息
   char flowDescribe[64];        // 当前步骤流程中文名字
 } _ReportStatus;
@@ -50,6 +50,7 @@ typedef enum
   StopDebug,
   StopScreen,
   StopUart,
+  StopError,
   StopUnknown = 0xFF, // 未知
 } StopMode;           // 停止类型
 
@@ -103,35 +104,18 @@ typedef enum
   error_flash_alarm = 37,  // 芯片存储异常告警
   null_formal_alarm = 38,  // 缺公式告警
 
-  valve_commuication_alarm = 253, // 旋转阀通信异常告警
-  spec_commuication_alarm = 254,  // 光谱仪通信异常告警
-  pump_commuication_alarm = 255,  // 柱塞泵通信异常告警
+  shuiliu_alarm = 48,     // 水流异常
+  moto_switch_alarm = 49, // 发生电机切换
+  yiji_yewei_alarm = 50,  // 一级液位超时异常
+  erji_yewei_alarm = 51,  // 二级级液位超时异常
+  sanji_yewei_alarm = 52, // 三级级液位超时异常
+
+  yiji_yewei_bushui_alarm = 53,  // 一级液位超时异常(补水)
+  erji_yewei_bushui_alarm = 54,  // 二级级液位超时异常(补水)
+  sanji_yewei_bushui_alarm = 55, // 三级级液位超时异常(补水)
+
+  sub_commuication_alarm = 255, // 副板通信异常告警
 } AlarmInfo;
-
-typedef enum
-{
-  no_error,                // 无故障
-  lr_error,                // 缺试剂故障
-  lw_error,                // 缺水样故障
-  lp_error,                // 缺纯水故障
-  ls_error,                // 缺标液故障
-  weeping_error,           // 漏液故障
-  cali_error,              // 标定异常故障
-  hot_error = 8,           // 加热故障
-  uplimit_error = 10,      // 超上限故障
-  downlimit_error,         // 超下限故障
-  other_error,             // 其他故障
-  range_switch_error = 15, // 量程切换故障
-  time_error = 34,         // 时间未校准故障
-  sd_error = 35,           // SD卡异常故障
-  null_flow_error = 36,    // 缺流程故障
-  error_flash_error = 37,  // 芯片存储异常故障
-  null_formal_error = 38,  // 缺公式故障
-
-  valve_commuication_error = 253, // 旋转阀通信异常故障
-  spec_commuication_error = 254,  // 光谱仪通信异常故障
-  pump_commuication_error = 255,  // 柱塞泵通信异常故障
-} ErrorInfo;
 
 typedef enum
 {
